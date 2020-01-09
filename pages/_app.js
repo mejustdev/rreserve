@@ -5,6 +5,7 @@ import baseUrl from '../utils/baseUrl';
 import axios from 'axios';
 import { redirectUser } from '../utils/auth';
 import { Router } from 'next/router';
+import UserContext from '../components/UserContext';
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const { token } = parseCookies(ctx);
@@ -53,11 +54,18 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <Layout {...pageProps}>
-        <Component {...pageProps} />
-      </Layout>
+      <UserContext.Provider value={{ user: pageProps.user }}>
+        <Layout {...pageProps}>
+          <Component {...pageProps} />
+        </Layout>
+      </UserContext.Provider>
     );
   }
+}
+{
+  /* <UserContext.Provider value={{ user: this.state.user, signIn: this.signIn, signOut: this.signOut }}>
+        <Component {...pageProps} />
+      </UserContext.Provider> */
 }
 
 export default MyApp;
