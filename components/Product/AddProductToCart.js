@@ -5,8 +5,11 @@ import axios from 'axios';
 import baseUrl from '../../utils/baseUrl';
 import catchErrors from '../../utils/catchErrors';
 import cookie from 'js-cookie';
+import { useContext } from 'react';
+import UserContext from '../UserContext';
 
-function AddProductToCart({ user, productId }) {
+function AddProductToCart({ productId }) {
+  const { user } = useContext(UserContext);
   const [quantity, setQuantity] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);

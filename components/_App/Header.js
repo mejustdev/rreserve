@@ -3,12 +3,15 @@ import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import { handleLogout } from '../../utils/auth';
+import { useContext } from 'react';
+import UserContext from '../UserContext';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-function Header({ user }) {
+function Header() {
+  const { user } = useContext(UserContext);
   const router = useRouter();
   const isRoot = user && user.role === 'root';
   const isAdmin = user && user.role === 'admin';

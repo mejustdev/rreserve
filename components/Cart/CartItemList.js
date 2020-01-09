@@ -1,7 +1,10 @@
 import { Header, Segment, Button, Icon, Item, Message } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import UserContext from '../UserContext';
 
-function CartItemList({ products, user, handleRemoveFromCart, success }) {
+function CartItemList({ products, handleRemoveFromCart, success }) {
+  const { user } = useContext(UserContext);
   const router = useRouter();
 
   function mapCartProductsToItems(products) {

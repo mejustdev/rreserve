@@ -42,7 +42,6 @@ function Cart({ products, user }) {
     <Segment loading={loading}>
       <CartItemList
         handleRemoveFromCart={handleRemoveFromCart}
-        user={user}
         products={cartProducts}
         success={success}
       />
