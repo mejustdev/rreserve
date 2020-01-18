@@ -62,10 +62,5 @@ class MyApp extends App {
     );
   }
 }
-{
-  /* <UserContext.Provider value={{ user: this.state.user, signIn: this.signIn, signOut: this.signOut }}>
-        <Component {...pageProps} />
-      </UserContext.Provider> */
-}
 
 export default MyApp;

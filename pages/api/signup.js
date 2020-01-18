@@ -34,7 +34,7 @@ export default async (req, res) => {
     // console.log({ newUser });
     // 5) create cart for new user
     await new Cart({ user: newUser._id }).save();
-    // 6) create token for the new user
+    // 6) create token for the new user. Secure way to transmit info between env as json obj.
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
       expiresIn: '7d',
     });

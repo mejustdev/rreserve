@@ -7,7 +7,7 @@ export function handleLogin(token) {
 }
 export function redirectUser(ctx, location) {
   if (ctx.req) {
-    ctx.res.writeHead(302, { Location: location });
+    ctx.res.writeHead(302, { Location: location }); // 302: found. Location indicates the target of a redirection. Location is a header associated with the response
     ctx.res.end();
   } else {
     Router.push(location);
